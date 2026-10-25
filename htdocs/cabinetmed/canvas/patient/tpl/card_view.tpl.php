@@ -212,7 +212,7 @@ print '<td class="nowrap">'.$langs->trans('PatientVATIntra').'</td><td>';
 if ($object->tva_intra) {
 	$s='';
 	$s.=$object->tva_intra;
-	$s.='<input type="hidden" id="tva_intra" name="tva_intra" maxlength="20" value="'.$object->tva_intra.'">';
+	$s.='<input type="hidden" id="tva_intra" name="tva_intra" maxlength="20" value="'.dolPrintHTMLForAttribute($object->tva_intra).'">';
 
 	if (!getDolGlobalString('MAIN_DISABLEVATCHECK') && isInEEC($object)) {
 		$s.=' &nbsp; ';

@@ -432,7 +432,7 @@ if (!getDolGlobalString('SOCIETE_DISABLE_STATE')) {
 
 // Phone / Fax
 print '<tr><td>'.$form->editfieldkey('Phone', 'phone', '', $object, 0).'</td>';
-print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning', 'class="pictofixedwidth"').' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="'.(GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $object->phone).'"></td>';
+print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning', 'class="pictofixedwidth"').' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $object->phone)).'"></td>';
 
 if ($conf->browser->layout == 'phone') {
 	print '</tr><tr>';
@@ -440,23 +440,23 @@ if ($conf->browser->layout == 'phone') {
 
 // Phone mobile
 print '<td>'.$form->editfieldkey('PhoneMobile', 'phone_mobile', '', $object, 0).'</td>';
-print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_mobile', 'class="pictofixedwidth"').' <input type="text" name="phone_mobile" id="phone_mobile" class="maxwidth200 widthcentpercentminusx" value="'.(GETPOSTISSET('phone_mobile') ? GETPOST('phone_mobile', 'alpha') : $object->phone_mobile).'"></td></tr>';
+print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_mobile', 'class="pictofixedwidth"').' <input type="text" name="phone_mobile" id="phone_mobile" class="maxwidth200 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('phone_mobile') ? GETPOST('phone_mobile', 'alpha') : $object->phone_mobile)).'"></td></tr>';
 
 // Email
 print '<tr><td>'.$form->editfieldkey('EMail', 'email', '', $object, 0, 'string', '', getDolGlobalInt('SOCIETE_EMAIL_MANDATORY')).'</td>';
-print '<td'.(($conf->browser->layout == 'phone') || !isModEnabled('mailing') ? ' colspan="3"' : '').'>'.img_picto('', 'object_email', 'class="pictofixedwidth"').' <input type="text" class="maxwidth200 widthcentpercentminusx" name="email" id="email" value="'.$object->email.'"></td>';
+print '<td'.(($conf->browser->layout == 'phone') || !isModEnabled('mailing') ? ' colspan="3"' : '').'>'.img_picto('', 'object_email', 'class="pictofixedwidth"').' <input type="text" class="maxwidth200 widthcentpercentminusx" name="email" id="email" value="'.dolPrintHTMLForAttribute($object->email).'"></td>';
 
 /*
 		print '<tr>';
 		// Height
 		$idprof=$langs->trans('HeightPeople');
 		print '<td>'.$idprof.'</td><td>';
-		print '<input type="text" name="idprof1" size="6" maxlength="6" value="'.$object->idprof1.'">';
+		print '<input type="text" name="idprof1" size="6" maxlength="6" value="'.dolPrintHTMLForAttribute($object->idprof1).'">';
 		print '</td>';
 		// Weight
 		$idprof=$langs->trans('Weight');
 		print '<td>'.$idprof.'</td><td>';
-		print '<input type="text" name="idprof2" size="6" maxlength="6" value="'.$object->idprof2.'">';
+		print '<input type="text" name="idprof2" size="6" maxlength="6" value="'.dolPrintHTMLForAttribute($object->idprof2).'">';
 		print '</td>';
 		print '</tr>';
 		print '<tr>';
@@ -508,7 +508,7 @@ while ($i <= $NBPROFIDMAX) {
 		$idprof=$langs->trans(((float) DOL_VERSION < 13) ? 'DateToBirth' : 'DateOfBirth'));
 		print '<td>'.$idprof.'</td><td colspan="3">';
 
-		print '<input type="text" name="idprof3" size="18" maxlength="32" value="'.$object->idprof3.'"> ('.$conf->format_date_short_java.')';
+		print '<input type="text" name="idprof3" size="18" maxlength="32" value="'.dolPrintHTMLForAttribute($object->idprof3).'"> ('.$conf->format_date_short_java.')';
 		//print $form->selectDate(-1,'birthdate');
 		print '</td>';
 		print '</tr>';
@@ -516,7 +516,7 @@ while ($i <= $NBPROFIDMAX) {
 		print '<tr>';
 		print '<td class="nowrap">'.$langs->trans('PatientVATIntra').'</td>';
 		print '<td class="nowrap" colspan="3">';
-		print '<input type="text" class="flat" name="tva_intra" size="18" maxlength="32" value="'.$object->tva_intra.'">';
+		print '<input type="text" class="flat" name="tva_intra" size="18" maxlength="32" value="'.dolPrintHTMLForAttribute($object->tva_intra).'">';
 		print '</td></tr>';
 
 		// Genre

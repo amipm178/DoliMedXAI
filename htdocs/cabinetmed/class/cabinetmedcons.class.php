@@ -191,7 +191,7 @@ class CabinetmedCons extends CommonObject
 		$sql.= ") VALUES (";
 		$sql.= " ".(! isset($this->fk_soc)?'NULL':"'".$this->fk_soc."'").",";
 		$sql.= " ".((int) $user->id).",";
-		$sql.= " ".(! isset($this->datecons) || dol_strlen($this->datecons)==0?'NULL':"'".$this->db->idate($this->datecons))."',";
+		$sql.= " ".(! isset($this->datecons) || dol_strlen($this->datecons)==0?'NULL':"'".$this->db->idate($this->datecons)."'").",";
 		$sql.= " '".$this->db->idate($now)."',";
 		$sql.= " ".(! isset($this->typepriseencharge)?'NULL':"'".$this->db->escape($this->typepriseencharge)."'").",";
 		$sql.= " ".(! isset($this->motifconsprinc)?'NULL':"'".$this->db->escape($this->motifconsprinc)."'").",";

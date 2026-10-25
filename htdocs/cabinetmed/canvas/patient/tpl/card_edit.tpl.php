@@ -280,10 +280,10 @@ if ((!$object->code_client || $object->code_client == -1) && $modCodeClient->cod
 	if (empty($tmpcode) && ! empty($modCodeClient->code_auto)) $tmpcode=$modCodeClient->getNextValue($object, 0);
 	print '<input type="text" name="code_client" id="customer_code" size="16" value="'.dol_escape_htmltag($tmpcode).'" maxlength="24">';
 } elseif ($object->codeclient_modifiable()) {
-	print '<input type="text" name="code_client" id="customer_code" size="16" value="'.$object->code_client.'" maxlength="24">';
+	print '<input type="text" name="code_client" id="customer_code" size="16" value="'.dolPrintHTMLForAttribute($object->code_client).'" maxlength="24">';
 } else {
 	print $object->code_client;
-	print '<input type="hidden" name="code_client" value="'.$object->code_client.'">';
+	print '<input type="hidden" name="code_client" value="'.dolPrintHTMLForAttribute($object->code_client).'">';
 }
 print '</td><td>';
 $s=$modCodeClient->getToolTip($langs, $object, 0);
@@ -329,7 +329,7 @@ if (((isModEnabled("fournisseur") && $user->hasRight('fournisseur', 'lire') && !
 		print '<input type="text" name="supplier_code" id="supplier_code" size="16" value="'.dol_escape_htmltag($object->code_fournisseur).'" maxlength="24">';
 	} else {
 		print $object->code_fournisseur;
-		print '<input type="hidden" name="supplier_code" value="'.$object->code_fournisseur.'">';
+		print '<input type="hidden" name="supplier_code" value="'.dolPrintHTMLForAttribute($object->code_fournisseur).'">';
 	}
 	print '</td><td>';
 	$s = $modCodeFournisseur->getToolTip($langs, $object, 1);
@@ -385,26 +385,26 @@ if (!getDolGlobalString('SOCIETE_DISABLE_STATE')) {
 
 // Phone / Fax
 print '<tr><td>'.$form->editfieldkey('Phone', 'phone', GETPOST('phone', 'alpha'), $object, 0).'</td>';
-print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning', 'class="pictofixedwidth"').' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="'.(GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $object->phone).'"></td>';
+print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning', 'class="pictofixedwidth"').' <input type="text" name="phone" id="phone" class="maxwidth200 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('phone') ? GETPOST('phone', 'alpha') : $object->phone)).'"></td>';
 if ($conf->browser->layout == 'phone') {
 	print '</tr><tr>';
 }
 print '<td>'.$form->editfieldkey('PhoneMobile', 'phone_mobile', GETPOST('phone_mobile', 'alpha'), $object, 0).'</td>';
-print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_mobile', 'class="pictofixedwidth"').' <input type="text" name="phone_mobile" id="phone_mobile" class="maxwidth200 widthcentpercentminusx" value="'.(GETPOSTISSET('phone_mobile') ? GETPOST('phone_mobile', 'alpha') : $object->phone_mobile).'"></td></tr>';
+print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_mobile', 'class="pictofixedwidth"').' <input type="text" name="phone_mobile" id="phone_mobile" class="maxwidth200 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('phone_mobile') ? GETPOST('phone_mobile', 'alpha') : $object->phone_mobile)).'"></td></tr>';
 
 print '<td>'.$form->editfieldkey('Fax', 'fax', GETPOST('fax', 'alpha'), $object, 0).'</td>';
-print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_fax', 'class="pictofixedwidth"').' <input type="text" name="fax" id="fax" class="maxwidth200 widthcentpercentminusx" value="'.(GETPOSTISSET('fax') ? GETPOST('fax', 'alpha') : $object->fax).'"></td>';
+print '<td'.($conf->browser->layout == 'phone' ? ' colspan="3"' : '').'>'.img_picto('', 'object_phoning_fax', 'class="pictofixedwidth"').' <input type="text" name="fax" id="fax" class="maxwidth200 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('fax') ? GETPOST('fax', 'alpha') : $object->fax)).'"></td>';
 print '</tr>';
 
 // Web
 print '<tr><td>'.$form->editfieldkey('Web', 'url', GETPOST('url', 'alpha'), $object, 0).'</td>';
-print '<td colspan="3">'.img_picto('', 'globe', 'class="pictofixedwidth"').' <input type="text" name="url" id="url" class="maxwidth200onsmartphone maxwidth300 widthcentpercentminusx " value="'.(GETPOSTISSET('url') ? GETPOST('url', 'alpha') : $object->url).'"></td></tr>';
+print '<td colspan="3">'.img_picto('', 'globe', 'class="pictofixedwidth"').' <input type="text" name="url" id="url" class="maxwidth200onsmartphone maxwidth300 widthcentpercentminusx " value="'.dolPrintHTMLForAttribute((GETPOSTISSET('url') ? GETPOST('url', 'alpha') : $object->url)).'"></td></tr>';
 
 // EMail
 print '<tr><td>'.$form->editfieldkey('EMail', 'email', GETPOST('email', 'alpha'), $object, 0, 'string', '', (getDolGlobalString('SOCIETE_EMAIL_MANDATORY'))).'</td>';
 print '<td colspan="3">';
 print img_picto('', 'object_email', 'class="pictofixedwidth"');
-print '<input type="text" name="email" id="email" class="maxwidth500 widthcentpercentminusx" value="'.(GETPOSTISSET('email') ? GETPOST('email', 'alpha') : $object->email).'">';
+print '<input type="text" name="email" id="email" class="maxwidth500 widthcentpercentminusx" value="'.dolPrintHTMLForAttribute((GETPOSTISSET('email') ? GETPOST('email', 'alpha') : $object->email)).'">';
 print '</td></tr>';
 
 // Unsubscribe
@@ -486,19 +486,19 @@ print '<tr>';
 // Height
 $idprof=$langs->trans('HeightPeople');
 print '<td>'.$idprof.'</td><td>';
-print '<input type="text" name="idprof1" size="6" maxlength="6" value="'.$object->idprof1.'">';
+print '<input type="text" name="idprof1" size="6" maxlength="6" value="'.dolPrintHTMLForAttribute($object->idprof1).'">';
 print '</td>';
 // Weight
 $idprof=$langs->trans('Weight');
 print '<td>'.$idprof.'</td><td>';
-print '<input type="text" name="idprof2" size="6" maxlength="6" value="'.$object->idprof2.'">';
+print '<input type="text" name="idprof2" size="6" maxlength="6" value="'.dolPrintHTMLForAttribute($object->idprof2).'">';
 print '</td>';
 print '</tr>';
 print '<tr>';
 // Date ot birth
 $idprof=$langs->trans(((float) DOL_VERSION < 13) ? 'DateToBirth' : 'DateOfBirth'));
 print '<td>'.$idprof.'</td><td colspan="3">';
-print '<input type="text" name="idprof3" size="18" maxlength="32" value="'.$object->idprof3.'"> ('.$conf->format_date_short_java.')';
+print '<input type="text" name="idprof3" size="18" maxlength="32" value="'.dolPrintHTMLForAttribute($object->idprof3).'"> ('.$conf->format_date_short_java.')';
 print '</td>';
 print '</tr>';
 */
@@ -572,7 +572,7 @@ if (getDolGlobalString('CABINETMED_SHOW_LEGAL_FORM')) {
 print '<tr>';
 print '<td class="nowrap">'.$langs->trans('PatientVATIntra').'</td>';
 print '<td class="nowrap" colspan="3">';
-$s ='<input type="text" class="flat" name="tva_intra" size="18" maxlength="20" value="'.$object->tva_intra.'">';
+$s ='<input type="text" class="flat" name="tva_intra" size="18" maxlength="20" value="'.dolPrintHTMLForAttribute($object->tva_intra).'">';
 print $s;
 print '</td></tr>';
 
@@ -650,9 +650,9 @@ include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_edit.tpl.php';
 // Webservices url/key
 if (isModEnabled('webservicesclient')) {
 	print '<tr><td>'.$form->editfieldkey('WebServiceURL', 'webservices_url', '', $object, 0).'</td>';
-	print '<td><input type="text" name="webservices_url" id="webservices_url" value="'.$object->webservices_url.'"></td>';
+	print '<td><input type="text" name="webservices_url" id="webservices_url" value="'.dolPrintHTMLForAttribute($object->webservices_url).'"></td>';
 	print '<td>'.$form->editfieldkey('WebServiceKey', 'webservices_key', '', $object, 0).'</td>';
-	print '<td><input type="text" name="webservices_key" id="webservices_key" value="'.$object->webservices_key.'"></td></tr>';
+	print '<td><input type="text" name="webservices_key" id="webservices_key" value="'.dolPrintHTMLForAttribute($object->webservices_key).'"></td></tr>';
 }
 
 // Logo

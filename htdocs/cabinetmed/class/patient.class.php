@@ -250,14 +250,14 @@ class Patient extends Societe
 
 			$sql = "UPDATE ".MAIN_DB_PREFIX."societe";
 			$sql.= " SET nom = '" . $this->db->escape($this->name) ."'"; // Champ obligatoire
-			$sql.= ",datea = '".$this->db->idate(mktime())."'";
+			$sql.= ",datea = '".$this->db->idate(dol_now())."'";
 			$sql.= ",address = '" . $this->db->escape($this->address) ."'";
 
-			$sql.= ",zip = ".($this->zip?"'".$this->zip."'":"null");
+			$sql.= ",zip = ".($this->zip?"'".$this->db->escape($this->zip)."'":"null");
 			$sql.= ",town = ".($this->town?"'".$this->db->escape($this->town)."'":"null");
 
-			$sql .= ",fk_departement = '" . ($this->state_id?$this->state_id:'0') ."'";
-			$sql .= ",fk_pays = '" . ($this->country_id?$this->country_id:'0') ."'";
+			$sql .= ",fk_departement = '" . ((int) $this->state_id) ."'";
+			$sql .= ",fk_pays = '" . ((int) $this->country_id) ."'";
 
 			$sql .= ",phone = ".($this->phone?"'".$this->db->escape($this->phone)."'":"null");
 			$sql .= ",fax = ".($this->fax?"'".$this->db->escape($this->fax)."'":"null");
@@ -269,7 +269,7 @@ class Patient extends Societe
 			$sql .= ",ape     = '". $this->db->escape($this->idprof3) ."'";
 			$sql .= ",idprof4 = '". $this->db->escape($this->idprof4) ."'";
 
-			$sql .= ",tva_assuj = ".($this->tva_assuj!=''?"'".$this->tva_assuj."'":"null");
+			$sql .= ",tva_assuj = ".($this->tva_assuj!=''?"'".$this->db->escape($this->tva_assuj)."'":"null");
 			$sql .= ",tva_intra = '" . $this->db->escape($this->tva_intra) ."'";
 
 			// Local taxes
@@ -280,16 +280,16 @@ class Patient extends Societe
 
 			$sql .= ",prefix_comm = ".($this->prefix_comm?"'".$this->db->escape($this->prefix_comm)."'":"null");
 
-			$sql .= ",fk_effectif = ".($this->effectif_id?"'".$this->effectif_id."'":"null");
+			$sql .= ",fk_effectif = ".($this->effectif_id?"'".$this->db->escape($this->effectif_id)."'":"null");
 
-			$sql .= ",fk_typent = ".($this->typent_id?"'".$this->typent_id."'":"0");
+			$sql .= ",fk_typent = ".($this->typent_id?"'".$this->db->escape($this->typent_id)."'":"0");
 
-			$sql .= ",fk_forme_juridique = ".($this->forme_juridique_code?"'".$this->forme_juridique_code."'":"null");
+			$sql .= ",fk_forme_juridique = ".($this->forme_juridique_code?"'".$this->db->escape($this->forme_juridique_code)."'":"null");
 
-			$sql .= ",client = " . ($this->client?$this->client:0);
-			$sql .= ",fournisseur = " . ($this->fournisseur?$this->fournisseur:0);
-			$sql .= ",barcode = ".($this->barcode?"'".$this->barcode."'":"null");
-			$sql .= ",default_lang = ".($this->default_lang?"'".$this->default_lang."'":"null");
+			$sql .= ",client = " . ((int) $this->client);
+			$sql .= ",fournisseur = " . ((int) $this->fournisseur);
+			$sql .= ",barcode = ".($this->barcode?"'".$this->db->escape($this->barcode)."'":"null");
+			$sql .= ",default_lang = ".($this->default_lang?"'".$this->db->escape($this->default_lang)."'":"null");
 
 
 			if ($allowmodcodeclient) {
