@@ -712,7 +712,7 @@ if ($user->hasRight('societe', 'creer') && $contextpage != 'poslist') {
 	$newcardbutton.= '</a>';
 }
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter" autocomplete="off">'."\n";
+print '<form method="POST" id="searchFormList" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'" name="formfilter" autocomplete="off">'."\n";
 if ($optioncss != '') {
 	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }
@@ -1337,7 +1337,7 @@ while ($i < min($num, $limit)) {
 				$titlealt = $val['label'];
 			}
 			if ($obj->stcomm_id != $val['id']) {
-				print '<a class="pictosubstatus reposition" href="'.$_SERVER["PHP_SELF"].'?stcommsocid='.$obj->rowid.'&stcomm='.urlencode($val['code']).'&action=setstcomm&token='.newToken().$param.($page ? '&page='.urlencode($page) : '').'">'.img_action($titlealt, $val['code'], $val['picto']).'</a>';
+				print '<a class="pictosubstatus reposition" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?stcommsocid='.$obj->rowid.'&stcomm='.urlencode($val['code']).'&action=setstcomm&token='.newToken().$param.($page ? '&page='.urlencode($page) : '').'">'.img_action($titlealt, $val['code'], $val['picto']).'</a>';
 			}
 		}
 		print '</div></div></td>';

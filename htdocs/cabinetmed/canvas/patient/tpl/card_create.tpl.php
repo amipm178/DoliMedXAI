@@ -245,7 +245,7 @@ dol_htmloutput_errors($GLOBALS['error'], $GLOBALS['errors']);
 })
 </script>
 
-<form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST" name="formsoc" enctype="multipart/form-data">
+<form action="<?php echo dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]); ?>" method="POST" name="formsoc" enctype="multipart/form-data">
 
 <input type="hidden" name="canvas" value="<?php echo $GLOBALS['canvas'] ?>">
 <input type="hidden" name="action" value="add">

@@ -303,7 +303,7 @@ class FormFileCabinetmed extends FormFile
 
 					// Send by email
 					print '<td class="right">';
-					print '<a href="'.$_SERVER["PHP_SELF"].'?action=presend&mode=init&socid='.$object->id.'&urlfile='.urlencode($file['name']).'#sendform">';
+					print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?action=presend&mode=init&socid='.$object->id.'&urlfile='.urlencode($file['name']).'#sendform">';
 					print img_object($langs->trans("SendOutcomeByEmail"), 'email');
 					print '</a>';
 					print '</td>';

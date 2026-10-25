@@ -205,11 +205,11 @@ if ($mode && ! count($data)) {
 	else {
 		print '<span class="opacitymedium">'.$langs->trans("ConsultsStatisticsDesc").'</span><br>';
 		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=cabinetmedbycountry">'.$langs->trans("ConsultsStatisticsByCountries").'</a><br>';
+		print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?mode=cabinetmedbycountry">'.$langs->trans("ConsultsStatisticsByCountries").'</a><br>';
 		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=cabinetmedbystate">'.$langs->trans("ConsultsStatisticsByState").'</a><br>';
+		print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?mode=cabinetmedbystate">'.$langs->trans("ConsultsStatisticsByState").'</a><br>';
 		print '<br>';
-		print '<a href="'.$_SERVER["PHP_SELF"].'?mode=cabinetmedbytown">'.$langs->trans("ConsultsStatisticsByTown").'</a><br>';
+		print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?mode=cabinetmedbytown">'.$langs->trans("ConsultsStatisticsByTown").'</a><br>';
 	}
 	print '<br>';
 }

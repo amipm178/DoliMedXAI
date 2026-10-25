@@ -87,7 +87,7 @@ if ($user->hasRight('societe', 'client', 'voir') || $socid) {
 	$period .= $langs->trans('ConsultCreatedBy'). ': ';
 	$period .= $htmlother->select_salesrepresentatives($search_sale, 'search_sale', $user, 0, 1, 'maxwidth300');
 }
-$periodlink=($year_start?"<a href='".$_SERVER["PHP_SELF"]."?year_start=".($year_start-1).($search_sale > 0 ? "&search_sale=".((int) $search_sale) : '')."'>".img_previous()."</a> <a href='".$_SERVER["PHP_SELF"]."?year_start=".($year_start+1)."&search_sale=".$search_sale."'>".img_next()."</a>":"");
+$periodlink=($year_start?"<a href='".dolPrintHTMLForAttribute($_SERVER["PHP_SELF"])."?year_start=".($year_start-1).($search_sale > 0 ? "&search_sale=".((int) $search_sale) : '')."'>".img_previous()."</a> <a href='".dolPrintHTMLForAttribute($_SERVER["PHP_SELF"])."?year_start=".($year_start+1)."&search_sale=".$search_sale."'>".img_next()."</a>":"");
 $description=$langs->trans("CabinetMedRulesResultInOut");
 $builddate=dol_now();
 $exportlink='';

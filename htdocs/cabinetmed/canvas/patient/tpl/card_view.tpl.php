@@ -351,7 +351,7 @@ if (!getDolGlobalString('SOCIETE_DISABLE_PARENTCOMPANY')) {
 	print '<table class="nobordernopadding centpercent"><tr><td>';
 	print $langs->trans('ParentPatient');
 	print '</td>';
-	if ($action != 'editparentcompany') print '<td class="right"><a class="editfielda" href="'.$_SERVER["PHP_SELF"].'?action=editparentcompany&token='.newToken().'&socid='.$object->id.'">'.img_edit($langs->transnoentitiesnoconv('Edit'), 1).'</a></td>';
+	if ($action != 'editparentcompany') print '<td class="right"><a class="editfielda" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?action=editparentcompany&token='.newToken().'&socid='.$object->id.'">'.img_edit($langs->transnoentitiesnoconv('Edit'), 1).'</a></td>';
 	print '</tr></table>';
 	print '</td><td>';
 	if ($action == 'editparentcompany') {
@@ -418,7 +418,7 @@ if (empty($reshook)) {
 	}
 
 	if ($user->hasRight('societe', 'creer')) {
-		print '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER["PHP_SELF"].'?socid='.$object->id.'&action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a></div>'."\n";
+		print '<div class="inline-block divButAction"><a class="butAction" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$object->id.'&action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a></div>'."\n";
 	}
 
 	print dolGetButtonAction($langs->trans('MergeThirdparties'), $langs->trans('Merge'), 'default', $_SERVER["PHP_SELF"].'?socid='.$object->id.'&action=merge&token='.newToken(), '', $permissiontodelete, array('attr' => array('classOverride' => 'butAction butActionDanger')))."\n";

@@ -291,7 +291,7 @@ if ($resql) {
 		print '<div class="divsearchfieldfilter">'.$langs->trans("FilterOnInto", $search_all) . join(', ', $fieldstosearchall).'</div>';
 	}
 
-	print '<form method="post" action="'.$_SERVER["PHP_SELF"].'" name="formfilter">';
+	print '<form method="post" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'" name="formfilter">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 
 

@@ -225,7 +225,7 @@ if ($socid > 0) {
 	elseif ((float) DOL_VERSION < 15) dol_fiche_head($head, 'tabexamautre', $langs->trans("Patient"), -1, 'patient@cabinetmed');
 	else dol_fiche_head($head, 'tabexamautre', $langs->trans("Patient"), -1, 'user-injured');
 
-	print '<form method="post" action="'.$_SERVER["PHP_SELF"].'">';
+	print '<form method="post" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 
 	$linkback = '<a href="'.dol_buildpath('/cabinetmed/patients.php', 1).'">'.$langs->trans("BackToList").'</a>';
@@ -348,7 +348,7 @@ if ($socid > 0) {
 		//print_fiche_titre($langs->trans("NewConsult"),'','');
 
 		// General
-		print '<form method="post" action="'.$_SERVER["PHP_SELF"].'">';
+		print '<form method="post" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'">';
 		print '<input type="hidden" name="token" value="'.newToken().'">';
 		if ($action=='create') print '<input type="hidden" name="action" value="add">';
 		if ($action=='edit')   print '<input type="hidden" name="action" value="update">';
@@ -475,7 +475,7 @@ if ($action == '' || $action == 'delete') {
 	print '<div class="tabsAction">';
 
 	if ($user->hasRight('societe', 'creer')) {
-		print '<a class="butAction" href="'.$_SERVER["PHP_SELF"].'?socid='.$societe->id.'&amp;action=create">'.$langs->trans("NewExamAutre").'</a>';
+		print '<a class="butAction" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$societe->id.'&amp;action=create">'.$langs->trans("NewExamAutre").'</a>';
 	}
 
 	print '</div>';
@@ -539,7 +539,7 @@ if ($action == '' || $action == 'delete') {
 			//print '<a href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">'.sprintf("%08d",$obj->rowid).'</a>';
 			//print '</td>';
 			print '<td>';
-			print '<a href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">';
+			print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">';
 			print dol_print_date($db->jdate($obj->dateexam), 'day');
 			print '</a>';
 			print '</td><td>';
@@ -551,7 +551,7 @@ if ($action == '' || $action == 'delete') {
 			//$conf->global->CABINETMED_DELAY_TO_LOCK_RECORD = 1;
 			if ($usercanupdate) {
 				if (!getDolGlobalInt('CABINETMED_DELAY_TO_LOCK_RECORD') || ($db->jdate($obj->dateexam) >= (dol_now() - (getDolGlobalInt('CABINETMED_DELAY_TO_LOCK_RECORD') * 24 * 60)))) {
-					print '<a class="reposition editfielda" href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">'.img_edit().'</a>';
+					print '<a class="reposition editfielda" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">'.img_edit().'</a>';
 				} else {
 					print '<a class="reposition editfielda disabled" href="#" title="'.$langs->trans("Locked").'">'.img_edit('', 0, 'class="disabled"').'</a>';
 				}
@@ -559,7 +559,7 @@ if ($action == '' || $action == 'delete') {
 			if ($usercandelete) {
 				print ' &nbsp; ';
 				if (!getDolGlobalInt('CABINETMED_DELAY_TO_LOCK_RECORD') || ($db->jdate($obj->dateexam) >= (dol_now() - (getDolGlobalInt('CABINETMED_DELAY_TO_LOCK_RECORD') * 24 * 60)))) {
-					print '<a class="reposition" href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=delete&token='.newToken().'">'.img_delete().'</a>';
+					print '<a class="reposition" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=delete&token='.newToken().'">'.img_delete().'</a>';
 				} else {
 					print '<a class="reposition disabled" href="#" title="'.$langs->trans("Locked").'">'.img_delete('', 'class="disabled"').'</a>';
 				}

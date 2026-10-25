@@ -168,7 +168,7 @@ dol_fiche_head($head, 'statsconsultations', '', ((float) DOL_VERSION < 7.0 ? 0 :
 print '<div class="fichecenter"><div class="fichethirdleft">';
 
 // Show filter box
-print '<form name="stats" method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+print '<form name="stats" method="POST" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'">';
 print '<input type="hidden" name="token" value="'.newToken().'">';
 
 print '<div class="div-table-responsive-no-min">';

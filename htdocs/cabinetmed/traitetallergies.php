@@ -151,7 +151,7 @@ if ($socid > 0) {
      });
     </script>';
 
-	print '<form method="post" action="'.$_SERVER["PHP_SELF"].'">';
+	print '<form method="post" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 	print '<input type="hidden" name="socid" value="'.$object->id.'">';
 	print '<input type="hidden" name="action" value="addupdate">';
@@ -261,7 +261,7 @@ if ($action == '') {
 	print '<div class="tabsAction">';
 
 	if ($user->hasRight('societe', 'creer')) {
-		print '<a class="butAction" href="'.$_SERVER["PHP_SELF"].'?socid='.$object->id.'&action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a>';
+		print '<a class="butAction" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$object->id.'&action=edit&token='.newToken().'">'.$langs->trans("Modify").'</a>';
 	}
 
 	print '</div>';

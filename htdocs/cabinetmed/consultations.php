@@ -590,7 +590,7 @@ if (! ($socid > 0)) {
 	$object = $savobject;
 
 	// General
-	print '<form method="post" action="'.$_SERVER["PHP_SELF"].'">';
+	print '<form method="post" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 	if ($action=='create') print '<input type="hidden" name="action" value="add">';
 	if ($action=='edit')   print '<input type="hidden" name="action" value="update">';
@@ -1220,7 +1220,7 @@ if ($action == '' || $action == 'list' || $action == 'delete') {
 	print '<div class="tabsAction">';
 
 	if ($user->hasRight('societe', 'creer')) {
-		print '<a class="butAction" href="'.$_SERVER["PHP_SELF"].'?socid='.$soc->id.'&action=create">'.$langs->trans("NewConsult").'</a>';
+		print '<a class="butAction" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$soc->id.'&action=create">'.$langs->trans("NewConsult").'</a>';
 	}
 
 	print '</div>';
@@ -1246,7 +1246,7 @@ if ($action == '' || $action == 'list' || $action == 'delete') {
 		print $formconfirm;
 	}
 
-	print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter" autocomplete="off">'."\n";
+	print '<form method="POST" id="searchFormList" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'" name="formfilter" autocomplete="off">'."\n";
 	if ($optioncss != '') print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 	print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
@@ -1528,10 +1528,10 @@ if ($action == '' || $action == 'list' || $action == 'delete') {
 			print $hookmanager->resPrint;
 
 			print '<td class="nowraponall">';
-			print '<a class="reposition editfielda" href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">'.img_edit().'</a>';
+			print '<a class="reposition editfielda" href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=edit&token='.newToken().'">'.img_edit().'</a>';
 			if ($user->hasRight('societe', 'supprimer')) {
 				print ' &nbsp; ';
-				print '<a href="'.$_SERVER["PHP_SELF"].'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=delete&token='.newToken().'">'.img_delete().'</a>';
+				print '<a href="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$obj->fk_soc.'&id='.$obj->rowid.'&action=delete&token='.newToken().'">'.img_delete().'</a>';
 			}
 			print '</td>';
 			print '</tr>';

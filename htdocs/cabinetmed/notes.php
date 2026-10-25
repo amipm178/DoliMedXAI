@@ -158,7 +158,7 @@ if ($socid > 0) {
          });
         </script>';
 
-	print '<form method="POST" action="'.$_SERVER['PHP_SELF'].'">';
+	print '<form method="POST" action="'.dolPrintHTMLForAttribute($_SERVER['PHP_SELF']).'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 
 	$linkback = '<a href="'.dol_buildpath('/cabinetmed/patients.php', 1).'">'.$langs->trans("BackToList").'</a>';

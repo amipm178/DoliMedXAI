@@ -334,7 +334,7 @@ if ($search_diaglesprinc != '')	$param.= '&search_diaglesprinc='.urlencode($sear
 if ($search_contactid != '')	$param.= '&search_contactid='.urlencode($search_contactid);
 if ($search_datecons != '')	    $param.= '&search_dateconsmonth='.GETPOSTINT('search_dateconsmonth').'&search_dateconsday='.GETPOSTINT('search_dateconsday').'&search_dateconsyear='.GETPOSTINT('search_dateconsyear');
 
-print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"].'" name="formfilter" autocomplete="off">'."\n";
+print '<form method="POST" id="searchFormList" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'" name="formfilter" autocomplete="off">'."\n";
 if ($optioncss != '') {
 	print '<input type="hidden" name="optioncss" value="'.$optioncss.'">';
 }

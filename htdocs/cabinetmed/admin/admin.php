@@ -126,7 +126,7 @@ $head[$h][1] = $langs->trans("About");
 $head[$h][2] = 'tababout';
 $h++;
 
-print '<form name="cabinetmed" action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+print '<form name="cabinetmed" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'" method="POST">';
 print '<input type="hidden" name="token" value="'.newToken().'">';
 print '<input type="hidden" name="action" value="update">';
 

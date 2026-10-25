@@ -165,7 +165,7 @@ if (GETPOST("name")) {
 <?php
 print_fiche_titre($langs->trans("EditPatient"));
 
-print '<form enctype="multipart/form-data" action="'.$_SERVER["PHP_SELF"].'?socid='.$object->id.'" method="post" name="formsoc">';
+print '<form enctype="multipart/form-data" action="'.dolPrintHTMLForAttribute($_SERVER["PHP_SELF"]).'?socid='.$object->id.'" method="post" name="formsoc">';
 print '<input type="hidden" name="action" value="update">';
 print '<input type="hidden" name="token" value="'.newToken().'">';
 print '<input type="hidden" name="socid" value="'.$object->id.'">';
