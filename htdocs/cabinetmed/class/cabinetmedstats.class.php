@@ -68,9 +68,9 @@ class CabinetMedStats extends Stats
 
 		$this->where=' 1=1';
 		if ($this->socid && !getDolGlobalString('MAIN_DISABLE_RESTRICTION_ON_THIRDPARTY_FOR_EXTERNAL')) {
-			$this->where.=" AND fk_soc = ".$this->socid;
+			$this->where.=" AND fk_soc = ".((int) $this->socid);
 		}
-		if ($this->userid > 0) $this->where.=' AND fk_user = '.$this->userid;
+		if ($this->userid > 0) $this->where.=' AND fk_user = '.((int) $this->userid);
 		if ($morefilter) $this->where.=$morefilter;
 	}
 
@@ -134,7 +134,7 @@ class CabinetMedStats extends Stats
 		$sql.=$this->db->ifsql('montant_carte IS NOT NULL', 'montant_carte', '0').'+';
 		$sql.=$this->db->ifsql('montant_tiers IS NOT NULL', 'montant_tiers', '0').')';
 		$sql.= " FROM ".$this->from.", ".MAIN_DB_PREFIX."societe as s";
-		$sql.= " WHERE date_format(datecons,'%Y') = '".$year."'";
+		$sql.= " WHERE date_format(datecons,'%Y') = '".((int) $year)."'";
 		$sql.= ($this->where?" AND ".$this->where:'');
 		$sql.= ($this->where?" AND ":" WHERE ");
 		$sql.= ' s.rowid = fk_soc AND s.entity IN ('.getEntity('societe', 1).')';
